@@ -25,8 +25,8 @@ You can download the example scenes in provided codes at the link below.
 
 
 ## Test with example codes
-
-To test our method using the provided codes and data, you can proceed in the following order:
+We provide the codes for various denoisers (e.g., cross-bilateral, [OIDN](https://www.openimagedenoise.org/), linear regression with G-buffers) and our target-aware denoiser for inverse MC rendering.
+For running the provided codes, you can proceed in the following order:
 
 1. Build and run docker image 
 ```
