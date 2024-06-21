@@ -21,12 +21,12 @@ You can download the example scenes in provided codes at the link below.
 
 - [Tire](https://github.com/wchang22/ReSTIR_DR)
 - [Veach-ajar](https://benedikt-bitterli.me/resources/)
-- [Curtain]()
+- Curtain (TBA)
 
 
 ## Test with example codes
 
-In order to test using the provided codes and data, you can proceed in the following order:
+To test our method using the provided codes and data, you can proceed in the following order:
 
 1. Build and run docker image 
 ```
