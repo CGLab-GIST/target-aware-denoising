@@ -8,12 +8,9 @@ CPP_FILES = [
 
 setup(
 	name='least_squares',
-	version='0.1',
-	install_requires=['torch'],
 	ext_modules=[CUDAExtension('least_squares_cpp', CPP_FILES, extra_compile_args={'cxx' : [], 'nvcc' : ['-arch', 'compute_70']})],
 	py_modules=["least_squares/least_squares"],
 	cmdclass={
 		'build_ext': BuildExtension
 	},
-	python_requires='>=3.6',
 )

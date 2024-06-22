@@ -8,12 +8,9 @@ CPP_FILES = [
 
 setup(
 	name='simple_regression',
-	version='0.1',
-	install_requires=['torch'],
 	ext_modules=[CUDAExtension('simple_regression_cpp', CPP_FILES, extra_compile_args={'cxx' : [], 'nvcc' : ['-arch', 'compute_70']})],
 	py_modules=["simple_regression/simple_regression"],
 	cmdclass={
 		'build_ext': BuildExtension
-	},
-	python_requires='>=3.6',
+	}
 )

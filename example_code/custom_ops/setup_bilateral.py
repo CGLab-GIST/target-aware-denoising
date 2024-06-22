@@ -8,12 +8,9 @@ CPP_FILES = [
 
 setup(
 	name='cross_bilateral',
-	version='0.1',
-	install_requires=['torch'],
 	ext_modules=[CUDAExtension('cross_bilateral_cpp', CPP_FILES, extra_compile_args={'cxx' : [], 'nvcc' : ['-arch', 'compute_70']})],
 	py_modules=["cross_bilateral/cross_bilateral"],
 	cmdclass={
 		'build_ext': BuildExtension
-	},
-	python_requires='>=3.6',
+	}
 )
