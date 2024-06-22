@@ -1,0 +1,9 @@
+setup.py
+least_squares/cuda_least_squares.cu
+least_squares/least_squares.cpp
+least_squares/least_squares.py
+least_squares.egg-info/PKG-INFO
+least_squares.egg-info/SOURCES.txt
+least_squares.egg-info/dependency_links.txt
+least_squares.egg-info/requires.txt
+least_squares.egg-info/top_level.txt
