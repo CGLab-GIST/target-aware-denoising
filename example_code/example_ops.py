@@ -164,8 +164,15 @@ def train(spp_forward, spp_backward, optimizer = 'Adam'):
         
     ## initialize the target parameter and render 
     param_initial = np.full(param_shape.tolist(), 0.5)
-    if (args.scene == "curtain"):
-        param_initial = mi.Bitmap(os.path.join(scene_dir, "textures","earth_initial_highres.jpg")).convert(mi.Bitmap.PixelFormat.RGB, mi.Struct.Type.Float32)
+
+    """
+     In our paper, we use a Mars image as the initial parameters for the Curtain scene,
+     and the Mars texture was provided by Solar System Scope: https://www.solarsystemscope.com/textures/
+     Note that the texture resolution should be the same as the target texture resolution (e.g., 1024x512). 
+    """
+    
+    # if (args.scene == "curtain"):
+        # param_initial = mi.Bitmap(os.path.join(scene_dir, "textures","mars_initial.jpg")).convert(mi.Bitmap.PixelFormat.RGB, mi.Struct.Type.Float32)
 
     params[key] = mi.TensorXf(param_initial)
     params.update();

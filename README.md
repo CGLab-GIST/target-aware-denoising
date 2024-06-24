@@ -21,7 +21,8 @@ You can download the example scenes in provided codes at the link below.
 
 - [Tire](https://github.com/wchang22/ReSTIR_DR)
 - [Veach-ajar](https://benedikt-bitterli.me/resources/)
-- Curtain (TBA)
+- [Curtain](https://cglab.gist.ac.kr/resources/)  
+In the paper, we use a Mars image (i.e., albedo textures) as the initial parameters, which you can download from this [website](https://www.solarsystemscope.com/textures/)
 
 
 ## Test with example codes
