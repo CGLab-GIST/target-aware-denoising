@@ -18,12 +18,12 @@ Please refer to the detailed instruction for the installation of [Docker](https:
 ## Download test scenes
 
 You can download the example scenes in provided codes at the link below.
-
+In the provided code, the default path for the scene file is set to "./scenes/SCENE_NAME/scene.xml"
 - [Tire](https://github.com/wchang22/ReSTIR_DR)
 - [Veach-ajar](https://benedikt-bitterli.me/resources/)
 - [Curtain](https://cglab.gist.ac.kr/resources/)  
-In the paper, we use a Mars image (i.e., albedo textures) as the initial parameters, which you can download from this [website](https://www.solarsystemscope.com/textures/)
-
+In the paper, we use a Mars image (i.e., albedo textures) as the initial parameters, which you can download from this [website](https://www.solarsystemscope.com/textures/).
+After that, please copy the downloaded textures in "./scenes/Curtain/textures/2k_mars.jpg".
 
 ## Test with example codes
 We provide the codes for various denoisers (e.g., cross-bilateral, [OIDN](https://www.openimagedenoise.org/), linear regression with G-buffers) and our target-aware denoiser for inverse MC rendering.

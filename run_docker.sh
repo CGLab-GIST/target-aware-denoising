@@ -1,6 +1,6 @@
 docker build -t sig24_target .
 
-nvidia-docker run \
+docker run \
     --rm \
     -e DISPLAY \
     -v /tmp/.X11-unix:/tmp/.X11-unix \

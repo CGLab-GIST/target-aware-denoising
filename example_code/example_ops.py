@@ -68,7 +68,7 @@ ITERATION           = args.iter
 
 
 if args.scene == "tire":
-    scene_dir = './scenes/tire'
+    scene_dir = './scenes/Tire'
     scene_name = 'scene.xml'
     key = 'mat-tire.brdf_0.roughness.data'
     resX = 1024
@@ -80,7 +80,7 @@ if args.scene == "tire":
     MAX_DEPTH = 8
 
 elif args.scene == "veach-ajar":
-    scene_dir = './scenes/veach-ajar'
+    scene_dir = './scenes/Veach-ajar'
     scene_name = 'scene.xml'
     key = 'LandscapeBSDF.brdf_0.reflectance.data'
     resX = 1280
@@ -93,8 +93,8 @@ elif args.scene == "veach-ajar":
     MAX_DEPTH = 13
 
 elif args.scene == "curtain":
-    scene_dir = './scenes/curtain'
-    scene_name = 'curtain.xml'
+    scene_dir = './scenes/Curtain'
+    scene_name = 'scene.xml'
     key = 'BC_sphere.reflectance.data'
     resX = 1024
     resY = 1024
@@ -144,11 +144,11 @@ param_ref = mi.TensorXf(params[key])
 param_shape = np.array(params[key].shape)
 
 ### render a  reference image
-gt_path = os.path.join(scene_dir, 'render_gt.exr')
+gt_path = os.path.join(scene_dir, 'target.exr')
 if not os.path.exists(gt_path):
     print("[RENDER GT]")
     image_ref = render_gt(scene, TARGET_SPP)
-    mi.util.write_bitmap(os.path.join(scene_dir, 'render_gt.exr'), image_ref)
+    mi.util.write_bitmap(os.path.join(scene_dir, 'target.exr'), image_ref)
 else:
     image_ref = mi.Bitmap(gt_path).convert(mi.Bitmap.PixelFormat.RGB, mi.Struct.Type.Float32)
     image_ref = mi.TensorXf(image_ref)
@@ -170,15 +170,12 @@ def train(spp_forward, spp_backward, optimizer = 'Adam'):
      and the Mars texture was provided by Solar System Scope: https://www.solarsystemscope.com/textures/
      Note that the texture resolution should be the same as the target texture resolution (e.g., 1024x512). 
     """
-    
-    # if (args.scene == "curtain"):
-        # param_initial = mi.Bitmap(os.path.join(scene_dir, "textures","mars_initial.jpg")).convert(mi.Bitmap.PixelFormat.RGB, mi.Struct.Type.Float32)
-
+    if (args.scene == "curtain"):
+        param_initial = mi.Bitmap(os.path.join(scene_dir, "textures","2k_mars.jpg")).convert(mi.Bitmap.PixelFormat.RGB, mi.Struct.Type.Float32)
+        param_initial = np.resize(param_initial, (param_shape[0], param_shape[1], param_shape[2]))
+        
     params[key] = mi.TensorXf(param_initial)
     params.update();
-
-    # image_init = render_gt(scene, TARGET_SPP)
-    # mi.util.write_bitmap(os.path.join(scene_dir, 'render_init.exr'), image_init)
 
     opt[key] = params[key] 
     params.update(opt);
@@ -255,6 +252,7 @@ iterations, total_losses, updated_param, total_time_list = train(TRAIN_SPP, TRAI
 
 params[key] = updated_param
 params.update();
+
 image_final = render_gt(scene, TEST_SPP)
 
 if args.denoise_ours:
